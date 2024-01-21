@@ -1,10 +1,11 @@
 import { Hono } from "hono";
-import login from "./login";
+import { initializeDatabase } from "./db";
 import register from "./register";
+
+initializeDatabase();
 
 const app = new Hono();
 
-app.route("/users", login);
-app.route("/users", register);
+app.route("/register", register);
 
 export default app;
