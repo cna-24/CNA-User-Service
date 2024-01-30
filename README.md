@@ -27,17 +27,18 @@ https://bun.sh/docs/installation
 
 ### 4. Clone the repository
 <ul>
-  <li> HTTPS:
+  <li> Https:
     
-    ```bash
-    git clone https://github.com/ErikMansen/CNA-User-API.git
-    ```
+  ```bash
+  git clone https://github.com/ErikMansen/CNA-User-API.git
+  ```
+  
   </li>
   <li> SSH:
     
-    ```bash
-    git clone git@github.com:ErikMansen/CNA-User-API.git
-    ```
+  ```bash
+  git clone git@github.com:ErikMansen/CNA-User-API.git
+  ```
   </li>
 </ul>
 
