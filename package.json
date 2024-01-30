@@ -1,15 +1,15 @@
 {
-  "scripts": {
-    "dev": "bun run --hot src/server.ts",
-    "db-gen": "bunx drizzle-kit generate:sqlite --schema src/db/schema.ts",
-    "db-migrate": "bun run src/db/migrate.ts"
-  },
-  "dependencies": {
-    "drizzle-orm": "^0.29.3",
-    "hono": "^3.12.3"
-  },
-  "devDependencies": {
-    "@types/bun": "^1.0.0",
-    "drizzle-kit": "^0.20.13"
-  }
+    "scripts": {
+        "dev": "bun run --hot src/server.ts",
+        "db-gen": "bunx drizzle-kit generate:sqlite --schema src/db/schema.ts",
+        "db-migrate": "bun run src/db/migrate.ts"
+    },
+    "dependencies": {
+        "drizzle-orm": "^0.29.3",
+        "hono": "^3.12.3"
+    },
+    "devDependencies": {
+        "@types/bun": "^1.0.0",
+        "drizzle-kit": "^0.20.13"
+    }
 }

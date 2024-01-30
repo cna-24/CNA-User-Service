@@ -6,5 +6,4 @@ import { Database } from "bun:sqlite";
 const sqlite = new Database("db.sqlite");
 const db = drizzle(sqlite);
 
-export default db
-
+export default db;
