@@ -10,10 +10,7 @@ interface RegisterRequest {
     password: string;
 }
 
-console.log("Register route registered");
-
 register.post("/", async (c) => {
-    console.log("Post request made to /register");
     try {
         const { username, password }: RegisterRequest = await c.req.json();
         validateRequestData(username, password);
