@@ -1,10 +1,14 @@
 # User Service API
 
+## Table of Contents
+1. [Dev Enviroment Setup](#dev)
+2. [API Endpoints](#endpoints)
+
+## Dev enviroment setup <a name="dev"></a>
+
 The project uses **Bun**, which has an experimental build for Windows support.
 <br>However, it is recommended to use the WSL (Windows Subsystem for Linux) implementation for a smoother experience.
 <br>https://bun.sh/docs/installation
-
-## Dev enviroment setup
 
 ### 1. Install WSL:
 - Open PowerShell
@@ -53,7 +57,7 @@ The project uses **Bun**, which has an experimental build for Windows support.
 
 ## API Endpoints
 
-### 1. Register
+### 1. Register <a name="endpoints"></a>
 
 - **Endpoint:** `/register`
 - **Method:** `POST`
