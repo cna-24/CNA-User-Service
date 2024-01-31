@@ -1,78 +1,72 @@
-<p>The project uses Bun, which has an experimental build for Windows support.<br> However, it is recommended to use the WSL (Windows Subsystem for Linux) implementation for a smoother experience.</p>
-https://bun.sh/docs/installation
+# User Service API
+
+The project uses **Bun**, which has an experimental build for Windows support.
+<br>However, it is recommended to use the WSL (Windows Subsystem for Linux) implementation for a smoother experience.
+<br>https://bun.sh/docs/installation
+
+## Dev enviroment setup
 
 ### 1. Install WSL:
-
-<ul>
-  <li>1. Open PowerShell</li>
-
-  <li>2. Run the following command to install Ubuntu (other distributions can be specified with the -d flag):
-
-```powershell
-wsl --install
-```
-
-  </li>
-</ul>
+- Open PowerShell
+- Run the following command to install Ubuntu (other distributions can be specified with the `-d` flag):
+  ```powershell
+  wsl --install
+  ```
 
 ### 2. Install the Bun runtime
 
-<ul>
-  <li>1. Run the command:
-    
+- Run the command:
    ```bash
    sudo apt install unzip && curl -fsSL https://bun.sh/install | bash
    ```
-   </li>
-   <li>2. Follow the instructions in the console</li>
-</ul>
+- Follow the instructions in the console
 
-### 4. Clone the repository
 
-<ul>
-  <li> HTTPS:
-    
+### 3. Clone the repository
+
+- HTTPS:
   ```bash
   git clone https://github.com/ErikMansen/CNA-User-API.git
   ```
-  
-  </li>
-  <li> SSH:
-    
+- SSH:
   ```bash
   git clone git@github.com:ErikMansen/CNA-User-API.git
   ```
-  </li>
-</ul>
 
 ### 5. Project setup
-
-<ul>
-  <li>1. Navigate into the root folder of the cloned repo</li>
-  <li>2. Install Dependecies
-
-```bash
-bun i
-```
-
-  </li>
-  <li>3. Create .env file
-
-```.env
-JWT_SECRET="YOUR_SECRET"
-```
-
-  </li>
-</ul>
-
+- Navigate into the root folder of the cloned repo
+- Install Dependecies
+  ```bash
+  bun i
+  ```
+- Create .env file
+  ```.env
+  JWT_SECRET="YOUR_SECRET"
+  ```
+  
 ### 6. Open in your favourite editor
 
-<ul>
-  <li>Visual Studio Code</li>
+- Visual Studio Code
+  ```bash
+  code .
+  ```
 
-```bash
-code .
-```
+## API Endpoints
 
-  <li>If promted to install something to open the project simply follow the instructions</li>
-</ul>
+### 1. Register
+
+- **Endpoint:** `/register`
+- **Method:** `POST`
+- **Content-Type** `application/json`
+- **Body Parameters:**
+  - `username`: String (required, min 4 characters)
+  - `password`: String (required, min 8 characters)
+ 
+- **Example Request:**
+  ```json
+  {
+    "username": "johndoe",
+    "password": "password123",
+  }
+  ```
+
