@@ -30,11 +30,11 @@ The project uses **Bun**, which has an experimental build for Windows support.
 
 - HTTPS:
   ```bash
-  git clone https://github.com/ErikMansen/CNA-User-API.git
+  git clone https://github.com/cna-24/CNA-User-Service.git
   ```
 - SSH:
   ```bash
-  git clone git@github.com:ErikMansen/CNA-User-API.git
+  git clone git@github.com/cna-24/CNA-User-Service.git
   ```
 
 ### 5. Project setup
