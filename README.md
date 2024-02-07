@@ -73,3 +73,4 @@ The project uses **Bun**, which has an experimental build for Windows support.
     "password": "password123",
   }
   ```
+
