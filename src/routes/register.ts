@@ -10,10 +10,7 @@ interface RegisterRequest {
     password: string;
 }
 
-console.log("Register route registered");
-
 register.post("/", async (c) => {
-    console.log("Post request made to /register");
     try {
         const { username, password }: RegisterRequest = await c.req.json();
         validateRequestData(username, password);
@@ -43,8 +40,7 @@ const createUser = async (username: string, password: string) => {
     const hashedPassword = await hashPassword(password);
     return await db
         .insert(users)
-        .values({ username, password: hashedPassword })
-        .returning({ id: users.id });
+        .values({ username, password: hashedPassword });
 };
 
 const hashPassword = async (password: string) => {
