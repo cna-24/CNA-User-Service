@@ -48,7 +48,15 @@ The project uses **Bun**, which has an experimental build for Windows support.
   JWT_SECRET="YOUR_SECRET"
   ```
   
-### 6. Open in your favourite editor
+### 6. Initialize Database
+
+- run the following commands
+  ```bash
+  bun run db-gen
+  bun run db-migrate
+  ```
+
+### 7. Open in your favourite editor
 
 - Visual Studio Code
   ```bash
