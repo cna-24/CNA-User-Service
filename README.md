@@ -81,4 +81,22 @@ The project uses **Bun**, which has an experimental build for Windows support.
     "password": "password123",
   }
   ```
+###  2. User 
+
+- **Endpoint:** `/user/:id`
+- **Method:** `GET`
+- **URL Parameter:**
+  - `id`: number (Int)
+
+- **Example Request:**
+  ```text
+  localhost:3000/user/1
+  ```
+- **Response:**
+  ```json
+  {
+    "id": 1,
+    "username": "johndoe"
+  }
+  ```
 
