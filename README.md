@@ -112,6 +112,8 @@ The project uses **Bun**, which has an experimental build for Windows support.
 - **Method:** `GET`
 - **URL Parameter:**
   - `id`: number (Int)
+- **Headers:** 
+  - `Authorization`: Bearer TOKEN
 
 - **Example Request:**
   ```text
