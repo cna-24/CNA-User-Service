@@ -3,7 +3,6 @@ import { verify } from "hono/jwt";
 import db from "../db/db";
 import { users } from "../db/schema";
 import { eq } from "drizzle-orm";
-import app from "../server";
 
 const user = new Hono();
 
@@ -27,19 +26,18 @@ user.get("/", async (c) => {
                 .from(users)
 
             if (allUsers) {
-                return c.json({ users: allUsers }, 200)
+                return c.json({ users: allUsers }, 200);
             } else {
-                return c.json({ message: "Could not list users" }, 404)
+                return c.json({ message: "Could not list users" }, 404);
             }
         } else {
-            return c.json({ message: "Unauthorized" }, 401)
+            return c.json({ message: "Unauthorized" }, 401);
         }
     } catch (err) {
-        return c.json({ message: "Unauthorized" }, 401)
+        return c.json({ message: "Unauthorized" }, 401);
     }
-})
+});
 
-// Authorization middleware? or leave like this?
 user.get("/:id", async (c) => {
     const token = c.req.header('Authorization');
 
@@ -73,7 +71,6 @@ user.get("/:id", async (c) => {
     }
 
 });
-
 
 user.delete("/:id", async (c) => {
     const token = c.req.header('Authorization');
