@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { sign } from "hono/jwt";
+import { verify } from "hono/jwt";
 import db from "../db/db";
 import { users } from "../db/schema";
 import { eq } from "drizzle-orm";
@@ -25,16 +25,40 @@ user.get("/", async (c) => {
 })
 
 
-// TODO: implement JWT to check that only a admin/logged in user is able to get the information
+// Authorization middleware? or leave like this?
 user.get("/:id", async (c) => {
-    const id = parseInt(c.req.param('id'))
-    const user = await getUserById(id)
+    const token = c.req.header('Authorization');
 
-    if (user) {
-        return c.json(user, 200)
-    } else {
-        return c.json({ message: "User not found" }, 404)
+    if (!token) {
+        return c.json({ message: "Unauthorized" }, 401)
     }
+
+    try {
+        const tokenValue = token.split(' ')[1];
+
+        const decoded = await verify(tokenValue, Bun.env.JWT_SECRET);
+
+        if (decoded.id === parseInt(c.req.param('id'))) {
+            const id = parseInt(c.req.param('id'));
+
+            const fetchedUser = await getUserById(id)
+            if (fetchedUser) {
+
+                if (fetchedUser.id === id) {
+                    return c.json(fetchedUser, 200)
+                } else {
+                    return c.json({ message: "Unauthorized" }, 401)
+                }
+            } else {
+                return c.json({ message: "User not found" }, 404)
+            }
+        } else {
+            return c.json({ message: "Unauthorized" }, 401)
+        }
+    } catch (err) {
+        return c.json({ message: "Invalid token" }, 401);
+    }
+
 });
 
 const getUserById = async (userId: number) => {
@@ -50,5 +74,6 @@ const getUserById = async (userId: number) => {
         return null;
     }
 }
+
 
 export default user;
