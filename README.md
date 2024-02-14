@@ -69,7 +69,7 @@ The project uses **Bun**, which has an experimental build for Windows support.
 
 - **Endpoint:** `/register`
 - **Method:** `POST`
-- **Content-Type** `application/json`
+- **Content-Type:** `application/json`
 - **Body Parameters:**
   - `username`: String (required, min 4 characters)
   - `password`: String (required, min 8 characters)
@@ -79,6 +79,49 @@ The project uses **Bun**, which has an experimental build for Windows support.
   {
     "username": "johndoe",
     "password": "password123",
+  }
+  ```
+
+### 2. Login 
+
+- **Endpoint:** `/login`
+- **Method:** `POST`
+- **Content-Type:** `application/json`
+- **Body Parameters:**
+  - `username`: String
+  - `password`: String
+
+- **Example Request:**
+  ```json
+  {
+    "username": "johndoe",
+    "password": "password123"
+  }
+  ```
+- **Response:**
+  ```json
+  {
+    "message": "Login successful",
+    "token": "user JWT"
+  }
+  ```
+
+###  3. User 
+
+- **Endpoint:** `/user/:id`
+- **Method:** `GET`
+- **URL Parameter:**
+  - `id`: number (Int)
+
+- **Example Request:**
+  ```text
+  localhost:3000/user/1
+  ```
+- **Response:**
+  ```json
+  {
+    "id": 1,
+    "username": "johndoe"
   }
   ```
 
