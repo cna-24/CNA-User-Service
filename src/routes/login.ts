@@ -19,7 +19,8 @@ login.post("/", async (c) => {
     if (user && (await isMatch(password, user.password))) {
         const payload = {
             id: user.id,
-            username: user.username
+            username: user.username,
+            admin: user.admin
         }
         const token = await sign(payload, Bun.env.JWT_SECRET);
         return c.json({
