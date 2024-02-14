@@ -8,6 +8,23 @@ import { eq } from "drizzle-orm";
 const user = new Hono();
 
 
+user.get("/", async (c) => {
+    const allUsers = await db
+        .select({
+            id: users.id,
+            username: users.username
+        })
+        .from(users)
+
+    if (allUsers) {
+        return c.json({ users: allUsers }, 200)
+    } else {
+        return c.json({ message: "Could not list users" }, 404)
+    }
+
+})
+
+
 // TODO: implement JWT to check that only a admin/logged in user is able to get the information
 user.get("/:id", async (c) => {
     const id = parseInt(c.req.param('id'))
