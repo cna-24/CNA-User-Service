@@ -17,8 +17,14 @@ login.post("/", async (c) => {
     const user = await getUser(username);
 
     if (user && (await isMatch(password, user.password))) {
-        const token = await sign(username, Bun.env.JWT_SECRET);
-        return c.json({ message: "Login successful", token: token }, 200);
+        const payload = {
+            id: user.id,
+            username: user.username
+        }
+        const token = await sign(payload, Bun.env.JWT_SECRET);
+        return c.json({
+            message: "Login successful", token: token
+        }, 200);
     }
 
     return c.json({ message: "Invalid credentials" }, 401);
