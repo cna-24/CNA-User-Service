@@ -6,12 +6,13 @@
     "studio": "bunx drizzle-kit studio"
   },
   "dependencies": {
+    "@hono/swagger-ui": "^0.2.1",
     "@libsql/client": "^0.4.3",
     "drizzle-orm": "^0.29.3",
     "hono": "^3.12.3"
   },
   "devDependencies": {
     "@types/bun": "^1.0.0",
-    "drizzle-kit": "^0.20.13"
+    "drizzle-kit": "^0.20.14"
   }
 }
