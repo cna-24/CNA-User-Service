@@ -1,7 +1,7 @@
 import { Context, Hono } from "hono";
 import db from "../db/db";
 import { users } from "../db/schema";
-import HttpError from "../utils/HttpError";
+import { HTTPException } from "hono/http-exception";
 
 const register = new Hono();
 
@@ -24,8 +24,8 @@ register.post("/", async (c) => {
 });
 
 const handleRegistrationError = (c: Context, error: unknown) => {
-    if (error instanceof HttpError) {
-        return c.json({ message: error.message }, error.statusCode);
+    if (error instanceof HTTPException) {
+        return error.getResponse();
     }
     if (
         error instanceof Error &&
@@ -53,10 +53,14 @@ const hashPassword = async (password: string) => {
 
 const validateRequestData = (username: string, password: string) => {
     if (username.length < 4) {
-        throw new HttpError("Username must be at least 4 characters long", 400);
+        throw new HTTPException(400, {
+            message: "Username must be at least 4 characters long",
+        });
     }
     if (password.length < 8) {
-        throw new HttpError("Password must be at least 8 characters long", 400);
+        throw new HTTPException(400, {
+            message: "Password must be at least 8 characters long",
+        });
     }
 };
 
