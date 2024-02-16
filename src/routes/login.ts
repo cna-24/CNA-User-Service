@@ -20,12 +20,16 @@ login.post("/", async (c) => {
         const payload = {
             id: user.id,
             username: user.username,
-            admin: user.admin
-        }
+            admin: user.admin,
+        };
         const token = await sign(payload, Bun.env.JWT_SECRET);
-        return c.json({
-            message: "Login successful", token: token
-        }, 200);
+        return c.json(
+            {
+                message: "Login successful",
+                token: token,
+            },
+            200
+        );
     }
 
     return c.json({ message: "Invalid credentials" }, 401);

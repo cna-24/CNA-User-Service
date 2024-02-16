@@ -2,11 +2,24 @@
 
 ## Table of Contents
 
-1. [Dev Enviroment Setup](#dev)
-2. [API Endpoints](#endpoints)
-   - [/register](#register)
-   - [/login](#login)
-   - [/user](#user)
+1. [How run the API](#host)
+2. [Dev Enviroment Setup](#dev)
+3. [API Endpoints](#endpoints)
+    - [/register](#register)
+    - [/login](#login)
+    - [/user](#user)
+
+## How to run the API
+
+You don't need to clone the entire project just the docker-compose.yaml file if you only want to use the API.
+
+To run the API locally, you need to first set the `JWT_SECRET` env variable in the `docker-compose.yaml` file. Then, you can start the API by running :
+
+```bash
+docker-compose up
+```
+
+**!NOTE:** Remember to start docker before running the command :) 
 
 ## Dev enviroment setup <a name="dev"></a>
 

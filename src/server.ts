@@ -7,7 +7,8 @@ import swagger from "./routes/swagger"
 import user from "./routes/user";
 
 if (!Bun.env.JWT_SECRET) {
-    console.error("Error JWT_SECRET is not set")
+    // ANSI escape code to color the output red
+    console.error("\x1b[31m%s\x1b[0m", "Error JWT_SECRET is not set")
     process.exit(0)
 }
 
