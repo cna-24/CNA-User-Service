@@ -4,9 +4,9 @@
 
 1. [Dev Enviroment Setup](#dev)
 2. [API Endpoints](#endpoints)
-   2.1 [/register](#register)
-   2.2 [/login](#login)
-   2.3 [/user](#user)
+   - [/register](#register)
+   - [/login](#login)
+   - [/user](#user)
 
 ## Dev enviroment setup <a name="dev"></a>
 
