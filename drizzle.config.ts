@@ -5,6 +5,6 @@ export default {
     out: "./drizzle",
     driver: "libsql",
     dbCredentials: {
-        url: "file:./db.sqlite",
+        url: "file:./database/db.sqlite",
     },
 } satisfies Config;
