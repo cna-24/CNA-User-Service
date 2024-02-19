@@ -3,7 +3,10 @@ version: '3.8'
 services:
   cna_user_api:
     image: zwad/cna_user_api:latest
+    volumes:
+      - ./db.sqlite:/app/db.sqlite
     environment:
-      - JWT_SECRET=       # <-- Add Secret here
+      - JWT_SECRET= # <-- Add Secret here
+    restart: unless-stopped
     ports:
       - "3000:3000"
