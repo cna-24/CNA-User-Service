@@ -10,6 +10,7 @@ COPY ./drizzle ./drizzle
 COPY ./src ./src
 
 RUN bun install
+RUN bun run db-gen
 RUN bun run db-migrate
 
 CMD bun run ./src/server.ts
