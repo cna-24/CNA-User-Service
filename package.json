@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "bun run --hot src/server.ts",
-    "db-gen": "bunx drizzle-kit generate:sqlite --schema ./src/db/schema.ts",
+    "db-gen": "bunx drizzle-kit generate:sqlite",
     "db-migrate": "bun run src/db/migrate.ts",
     "studio": "bunx drizzle-kit studio"
   },
