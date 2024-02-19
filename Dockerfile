@@ -8,6 +8,8 @@ COPY ./drizzle ./drizzle
 
 # Copy the source code to /app/src
 COPY ./src ./src
+# Copy the database folder to /app/database
+COPY ./database ./database
 
 RUN bun install
 RUN bun run db-gen
