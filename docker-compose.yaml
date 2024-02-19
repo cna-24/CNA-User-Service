@@ -4,7 +4,7 @@ services:
   cna_user_api:
     image: zwad/cna_user_api:latest
     volumes:
-      - ./db.sqlite:/app/db.sqlite
+      - ./database:/app/database
     environment:
       - JWT_SECRET= # <-- Add Secret here
     restart: unless-stopped
