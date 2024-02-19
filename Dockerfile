@@ -12,7 +12,6 @@ COPY ./src ./src
 COPY ./database ./database
 
 RUN bun install
-RUN bun run db-gen
 RUN bun run db-migrate
 
 CMD bun run ./src/server.ts
