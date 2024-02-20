@@ -6,5 +6,5 @@ export const users = sqliteTable("users", {
     id: integer("id").primaryKey().notNull(),
     username: text("username").unique().notNull(),
     password: text("password").notNull(),
-    admin: integer('admin', { mode: 'boolean' }).default(false)
+    admin: integer("admin", { mode: "boolean" }).default(false),
 });
