@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - 'src/**'
-      - 'drizzle/**
+      - 'drizzle/**'
 
 jobs:
   build:
