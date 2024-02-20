@@ -2,14 +2,21 @@
 
 ## Table of Contents
 
-1. [How run the API](#host)
-2. [Dev Enviroment Setup](#dev)
-3. [API Endpoints](#endpoints)
+1. [Using the API](#host)
+2. [How run the API](#host_self)
+3. [Dev Enviroment Setup](#dev)
+4. [API Endpoints](#endpoints)
     - [/register](#register)
     - [/login](#login)
     - [/user](#user)
 
-## How to run the API
+## Using the API <a name="host"></a>
+
+The API is hosted at `129.151.209.231:3000`. 
+
+The server is configured to automatically check for updates in the Docker Hub repository every 2 minutes. Whenever there's a push event to the main branch of this GitHub repository, a new container is automatically built and pushed to the Docker Hub repository, ensuring the API is updated with any changes.
+
+## How to run the API locally  <a name="host_self"></a>
 
 You don't need to clone the entire project just the docker-compose.yaml file if you only want to use the API.
 
