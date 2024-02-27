@@ -10,13 +10,14 @@
     - [/login](#login)
     - [/user](#user)
 
-## Using the API <a name="host"></a>
+## Accessing the Hosted API <a name="host"></a>
 
-The API is hosted at `129.151.209.231:3000`. 
+**IMPORTANT:** Your CORS origin needs to be approved for the API to function correctly. 
 
-**THE API WON'T WORK UNLESS YOUR CORS ORIGIN IS ADDED!**
+The API is available at `129.151.209.231:3000`. 
 
-The server is configured to automatically check for updates in the Docker Hub repository every 2 minutes. Whenever there's a push event to the main branch of this GitHub repository, a new container is automatically built and pushed to the Docker Hub repository, ensuring the API is updated with any changes.
+
+The server is configured to automatically check for updates in the Docker Hub repository. Whenever there's a push event to the main branch of this GitHub repository, a new container is automatically built and pushed to the Docker Hub repository, ensuring the API is always up to date.
 
 ## How to run the API locally  <a name="host_self"></a>
 
@@ -27,8 +28,6 @@ To run the API locally, first configure the `JWT_SECRET` env variable in the doc
 ```bash
 docker-compose up -d
 ```
-
-**!NOTE:** Remember to start docker before running the command :) 
 
 ## Dev enviroment setup <a name="dev"></a>
 
