@@ -14,7 +14,7 @@
 
 **IMPORTANT:** Your CORS origin needs to be approved for the API to function correctly. 
 
-The API is available at `129.151.209.231:3000`. 
+The API is available at `https://cna-user-api.duckdns.org`. 
 
 
 The server is configured to automatically check for updates in the Docker Hub repository. Whenever there's a push event to the main branch of this GitHub repository, a new container is automatically built and pushed to the Docker Hub repository, ensuring the API is always up to date.
