@@ -1,18 +1,18 @@
 {
-  "scripts": {
-    "dev": "bun run --hot src/server.ts",
-    "db-gen": "bunx drizzle-kit generate:sqlite",
-    "db-migrate": "bun run src/db/migrate.ts",
-    "studio": "bunx drizzle-kit studio"
-  },
-  "dependencies": {
-    "@hono/swagger-ui": "^0.2.1",
-    "@libsql/client": "^0.4.3",
-    "drizzle-orm": "^0.29.3",
-    "hono": "^3.12.3"
-  },
-  "devDependencies": {
-    "@types/bun": "^1.0.0",
-    "drizzle-kit": "^0.20.14"
-  }
+    "scripts": {
+        "dev": "bun run --hot src/server.ts",
+        "db-gen": "bunx drizzle-kit generate:sqlite",
+        "db-migrate": "bun run src/db/migrate.ts",
+        "studio": "bunx drizzle-kit studio"
+    },
+    "dependencies": {
+        "@hono/swagger-ui": "^0.2.1",
+        "@libsql/client": "^0.4.3",
+        "drizzle-orm": "^0.29.3",
+        "hono": "^3.12.3"
+    },
+    "devDependencies": {
+        "@types/bun": "^1.0.0",
+        "drizzle-kit": "^0.20.14"
+    }
 }
