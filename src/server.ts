@@ -24,7 +24,7 @@ if (!ALLOWED_ORIGINS.length) {
 const app = new Hono();
 
 app.use(
-    "/",
+    "*",
     cors({
         origin: ALLOWED_ORIGINS,
         allowMethods: ["GET", "POST", "DELETE"],
