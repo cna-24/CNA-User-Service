@@ -7,8 +7,8 @@ services:
       - db-data:/app/database
     environment:
       - JWT_SECRET= # <-- Add the JWT secret key here.
-      - ALLOWED_ORIGINS=  # <-- List the allowed CORS origins here, separating multiple entries with a comma.
-    restart: unless-stopped
+      - ALLOWED_ORIGINS= # <-- List the allowed CORS origins here, separating multiple entries with a comma.
+    restart: on-failure
     ports:
       - "3000:3000"
 volumes:

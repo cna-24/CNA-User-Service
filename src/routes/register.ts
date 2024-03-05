@@ -1,4 +1,4 @@
-import { Context, Hono } from "hono";
+import { Hono } from "hono";
 import db from "../db/db";
 import { users } from "../db/schema";
 import { HTTPException } from "hono/http-exception";
@@ -11,30 +11,27 @@ interface RegisterRequest {
 }
 
 register.post("/", async (c) => {
-    try {
-        const { username, password }: RegisterRequest = await c.req.json();
-        validateRequestData(username, password);
+    const { username, password }: RegisterRequest = await c.req.json();
+    validateRequestData(username, password);
 
-        await createUser(username, password);
+    await createUser(username, password);
 
-        return c.json({ message: "Registration successful" }, 200);
-    } catch (error) {
-        return handleRegistrationError(c, error);
-    }
+    return c.json({ message: "Registration successful" }, 201);
 });
 
-const handleRegistrationError = (c: Context, error: unknown) => {
-    if (error instanceof HTTPException) {
-        return error.getResponse();
+register.onError((err, c) => {
+    if (err instanceof HTTPException) {
+        return c.json({ message: err.message }, err.status);
     }
     if (
-        error instanceof Error &&
-        error.message.includes("UNIQUE constraint failed")
+        err instanceof Error &&
+        err.message.includes("UNIQUE constraint failed")
     ) {
-        return c.json("Username already taken", 400);
+        return c.json({ message: "Username already taken" }, 400);
     }
+
     return c.json({ message: "Internal server error" }, 500);
-};
+});
 
 const createUser = async (username: string, password: string) => {
     const hashedPassword = await hashPassword(password);
