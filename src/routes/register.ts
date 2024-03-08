@@ -8,13 +8,14 @@ const register = new Hono();
 interface RegisterRequest {
     username: string;
     password: string;
+    email: string;
 }
 
 register.post("/", async (c) => {
-    const { username, password }: RegisterRequest = await c.req.json();
+    const { username, email, password }: RegisterRequest = await c.req.json();
     validateRequestData(username, password);
 
-    await createUser(username, password);
+    await createUser(username, email, password);
 
     return c.json({ message: "Registration successful" }, 201);
 });
@@ -33,11 +34,11 @@ register.onError((err, c) => {
     return c.json({ message: "Internal server error" }, 500);
 });
 
-const createUser = async (username: string, password: string) => {
+const createUser = async (username: string, email: string, password: string) => {
     const hashedPassword = await hashPassword(password);
     return await db
         .insert(users)
-        .values({ username, password: hashedPassword });
+        .values({ username, email, password: hashedPassword });
 };
 
 const hashPassword = async (password: string) => {

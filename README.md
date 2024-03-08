@@ -100,12 +100,14 @@ The project uses **Bun**, which has an experimental build for Windows support.
 
     -   `username`: String (required, min 4 characters)
     -   `password`: String (required, min 8 characters)
+    -   `email`: String
 
 -   **Example Request:**
     ```json
     {
         "username": "johndoe",
-        "password": "password123"
+        "password": "password123",
+        "email": "blabla@gmail.com"
     }
     ```
 

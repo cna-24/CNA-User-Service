@@ -20,6 +20,7 @@ login.post("/", async (c) => {
         const payload = {
             id: user.id,
             username: user.username,
+            email: user.email,
             admin: user.admin,
         };
         const token = await sign(payload, Bun.env.JWT_SECRET);
