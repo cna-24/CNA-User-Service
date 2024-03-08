@@ -230,6 +230,7 @@ The project uses **Bun**, which has an experimental build for Windows support.
 **The returned JWT contains the following information**
 - **user id:** `Int`
 - **username:** `String`
+- **email:** `String`
 - **admin:** `Boolean`
 
     -   **Example information from a JWT:**
@@ -237,6 +238,7 @@ The project uses **Bun**, which has an experimental build for Windows support.
         {
           "id": 1,
           "username": "johndoe",
+          "email": "blabla@gmail.com",
           "admin": false
         }
          ```
