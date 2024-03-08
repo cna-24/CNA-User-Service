@@ -29,6 +29,9 @@ const UserSchema = z
         username: z.string().openapi({
             example: "John Doe",
         }),
+        email: z.string().openapi({
+            example: "blabla@gmail.com",
+        }),
         password: z.string().min(8).openapi({
             example: "password123",
         }),
@@ -137,6 +140,7 @@ const register = createRoute({
             "application/json": {
                 example: {
                     username: "JohnDoe",
+                    email: "blabla@gmail.com",
                     password: "password123",
                 },
             },
@@ -181,6 +185,7 @@ app.openapi(userRoute, (c) => {
     return c.json({
         id: "1",
         username: "Ultra-man",
+        email: "blabla@gmail.com",
         password: "password",
         admin: "False",
         token: "token",
