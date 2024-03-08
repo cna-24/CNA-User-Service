@@ -9,15 +9,21 @@
     - [/register](#register)
     - [/login](#login)
     - [/user](#user)
+5. [JWT](#JWT)
 
 ## Accessing the Hosted API <a name="host"></a>
 
 **IMPORTANT:** Your CORS origin needs to be approved for the API to function correctly. 
 
-The API is available at `https://cna-user-api.duckdns.org`. 
-
+- The API is available at: <a>https://cna-user-api.duckdns.org</a>
 
 The server is configured to automatically check for updates in the Docker Hub repository. Whenever there's a push event to the main branch of this GitHub repository, a new container is automatically built and pushed to the Docker Hub repository, ensuring the API is always up to date.
+
+### Documentation on the API
+The usage of the API can be found later in this file, or you can use our swagger (openAPI) documentation
+- Swagger in JSON format is available at: <a>https://cna-user-api.duckdns.org/swagger/doc</a>
+- SwaggerUI is available at: <a>https://cna-user-api.duckdns.org/swagger/ui</a>
+
 
 ## How to run the API locally  <a name="host_self"></a>
 
@@ -168,7 +174,7 @@ The project uses **Bun**, which has an experimental build for Windows support.
     }
     ```
 
-#### 2. Get user with id
+#### 2. Get user with id 
 
 **NOTE! Only a admin or the owner can get user information!**
 
@@ -217,3 +223,18 @@ The project uses **Bun**, which has an experimental build for Windows support.
         "username": "user1"
     }
     ```
+
+## JWT <a name="JWT"></a>
+**The returned JWT contains the following information**
+- **user id:** `Int`
+- **username:** `String`
+- **admin:** `Boolean`
+
+    -   **Example information from a JWT:**
+        ```json
+        {
+          "id": 1,
+          "username": "johndoe",
+          "admin": false
+        }
+         ```
