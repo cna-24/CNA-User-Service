@@ -29,7 +29,7 @@ The usage of the API can be found later in this file, or you can use our swagger
 
 You don't need to clone the entire project just the docker-compose.yaml file if you only want to use the API.
 
-To run the API locally, first configure the `JWT_SECRET` env variable in the docker-compose.yml file. If you wish to specify allowed CORS origins, set the `ALLOWED_ORIGINS` environment variable as well. After setting these variables, start the API by executing the following command:
+To run the API locally, first configure the `JWT_SECRET`, `ADMIN_USERNAME`, `ADMIN_PASSWORD` and `ADMIN_EMAIL` env variable in the docker-compose.yml file. If you wish to specify allowed CORS origins, set the `ALLOWED_ORIGINS` environment variable as well. After setting these variables, start the API by executing the following command:
 
 ```bash
 docker-compose up -d
@@ -176,7 +176,44 @@ The project uses **Bun**, which has an experimental build for Windows support.
     }
     ```
 
-#### 2. Get user with id 
+#### 3.2 Update/patch user
+
+**NOTE! Only a admin or the owner can update information!**
+
+-   **Endpoint:** `/user/:id`
+-   **Method:** `Patch`
+-   **URL Parameter:**
+    -   `id`: number (Int)
+-   **Headers:**
+
+    -   `Authorization`: Bearer TOKEN
+-   **Body Parameters:**
+
+    -   `password`: String (required, min 8 characters)
+    -   `email`: String
+    -   `admin`: Boolean
+
+
+-   **Example Request:**
+    ```text
+    url:port/user/1
+    ```
+    ```json
+    {
+        "email": "blabla@gmail.com",
+        "password": "password",
+        "admin": "False"
+    }
+    ```
+    
+-   **Response:**
+    ```json
+    {
+       "message": "Updated Succesfully"
+    }
+    ```
+
+#### 3.3 Get user with id 
 
 **NOTE! Only a admin or the owner can get user information!**
 
@@ -200,7 +237,8 @@ The project uses **Bun**, which has an experimental build for Windows support.
     }
     ```
 
-#### 3. Delete user
+
+#### 3.4 Delete user
 
 **NOTE! Admin can delete any user!**
 **Owner can delete own user!**
@@ -226,7 +264,7 @@ The project uses **Bun**, which has an experimental build for Windows support.
     }
     ```
 
-## JWT <a name="JWT"></a>
+## 4. JWT <a name="JWT"></a>
 **The returned JWT contains the following information**
 - **user id:** `Int`
 - **username:** `String`
