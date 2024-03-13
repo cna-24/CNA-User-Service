@@ -43,12 +43,9 @@ app.use(
     "*",
     cors({
         origin: ALLOWED_ORIGINS,
-        allowMethods: ["GET", "POST", "DELETE"],
+        allowMethods: ["GET", "POST", "DELETE", "PATCH"],
     })
 );
-
-
-
 
 app.route("/swagger", swagger);
 app.route("/register", register);
