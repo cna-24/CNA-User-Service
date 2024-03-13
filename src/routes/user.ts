@@ -3,8 +3,15 @@ import { verify } from "hono/jwt";
 import db from "../db/db";
 import { users } from "../db/schema";
 import { eq } from "drizzle-orm";
+import { hashPassword } from "./register";
 
 const user = new Hono();
+
+interface PatchUser {
+    email?: string;
+    password?: string;
+    admin?: boolean;
+}
 
 user.get("/", async (c) => {
     const token = c.req.header('Authorization');
@@ -69,8 +76,43 @@ user.get("/:id", async (c) => {
     } catch (err) {
         return c.json({ message: "Invalid token" }, 401);
     }
-
 });
+
+user.patch("/:id", async (c) => {
+    const { email, password, admin }: PatchUser = await c.req.json()
+    const token = c.req.header('Authorization');
+
+    if (!token) {
+        return c.json({ message: 'Unauthorized' }, 401)
+    }
+
+    try {
+        const tokenValue = token.split(' ')[1];
+        const decoded = await verify(tokenValue, Bun.env.JWT_SECRET);
+
+        const id = parseInt(c.req.param('id'))
+        if (decoded.id == id || decoded.admin) {
+            const updateData: Partial<{ email: string; password: string, admin: boolean }> = {};
+            if (email) updateData.email = email;
+            if (password) {
+                const hashedPassword = await hashPassword(password)
+                updateData.password = hashedPassword;
+            }
+            if (decoded.admin && admin !== undefined) {
+                updateData.admin = admin;
+            }
+            if (Object.keys(updateData).length > 0) {
+                await db.update(users).set(updateData).where(eq(users.id, id))
+                return c.json({ message: "Updated user" })
+            }
+        }
+        return c.json({ message: "Unauthorized to update user" }, 401)
+    } catch (error) {
+        return c.json({ message: "error", error })
+    }
+})
+
+
 
 user.delete("/:id", async (c) => {
     const token = c.req.header('Authorization');

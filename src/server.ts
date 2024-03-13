@@ -4,6 +4,7 @@ import register from "./routes/register";
 import login from "./routes/login";
 import swagger from "./routes/swagger";
 import user from "./routes/user";
+import createAdmin from "./middleware/adminMiddleware";
 
 if (!Bun.env.JWT_SECRET) {
     console.error("\x1b[31m%s\x1b[0m", "Error JWT_SECRET is not set");
@@ -21,13 +22,28 @@ if (!ALLOWED_ORIGINS.length) {
     );
 }
 
+
+
 const app = new Hono();
+(async () => {
+    try {
+        if (Bun.env.ADMIN_USERNAME && Bun.env.ADMIN_EMAIL && Bun.env.ADMIN_PASSWORD) {
+            await createAdmin(Bun.env.ADMIN_USERNAME, Bun.env.ADMIN_EMAIL, Bun.env.ADMIN_PASSWORD)
+        } else {
+            console.error("Error creating admin user: Missing parameters.")
+        }
+
+    } catch (error) {
+        console.error("error creating Admin user:", error)
+    }
+})();
+
 
 app.use(
     "*",
     cors({
         origin: ALLOWED_ORIGINS,
-        allowMethods: ["GET", "POST", "DELETE"],
+        allowMethods: ["GET", "POST", "DELETE", "PATCH"],
     })
 );
 
@@ -37,3 +53,4 @@ app.route("/login", login);
 app.route("/user", user);
 
 export default app;
+
