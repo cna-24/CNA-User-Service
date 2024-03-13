@@ -51,6 +51,15 @@ const LoginSchema = z.object({
     }),
 });
 
+const UpdateSchema = z.object({
+    message: z.string().openapi({
+        example: "Update successful",
+    }),
+    username: z.string().openapi({
+        example: "testuser",
+    }),
+});
+
 const userRoute = createRoute({
     method: "get",
     path: "/user",
@@ -67,7 +76,7 @@ const userRoute = createRoute({
         200: {
             content: {
                 "application/json": {
-                    schema: UserSchema,
+                    schema: LoginSchema,
                 },
             },
             description: "Retrive all users",
@@ -103,6 +112,48 @@ const route = createRoute({
     },
 });
 
+const patchRoute = createRoute({
+    method: "patch",
+    path: "/user/{id}",
+    tags: ["Update"],
+    security: [
+        {
+            Bearer: [],
+        },
+    ],
+
+    request: {
+        headers: HeadersSchema,
+        params: ParamsSchema,
+    },
+    requestBody: {
+        description: "Update a user",
+        content: {
+            "application/json": {
+                example: {
+                    email: "blabla@gmail.com",
+                    password: "password123",
+                    admin: "True",
+                },
+                
+            },
+        },
+    },
+    responses: {
+        200: {
+            content: {
+                "application/json": {
+                    schema: UserSchema,
+                },
+            },
+            description: "Update the user",
+        },
+        401: {
+            description: "Unauthorized",
+        },
+    },
+});
+
 const login = createRoute({
     method: "post",
     path: "/login",
@@ -113,7 +164,7 @@ const login = createRoute({
             "application/json": {
                 example: {
                     username: "JohnDoe",
-                    passowrd: "password1234",
+                    password: "password123",
                 },
             },
         },
@@ -183,12 +234,21 @@ app.openapi(login, (c) => {
 
 app.openapi(userRoute, (c) => {
     return c.json({
+        message: "blabla",
         id: "1",
         username: "Ultra-man",
         email: "blabla@gmail.com",
         password: "password",
         admin: "False",
         token: "token",
+    });
+});
+
+app.openapi(patchRoute, (c) => {
+    return c.json({
+        email: "blabla@gmail.com",
+        password: "password",
+        admin: "False"
     });
 });
 
