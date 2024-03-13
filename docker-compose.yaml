@@ -4,7 +4,7 @@ services:
   cna_user_api:
     image: zwad/cna_user_api:latest
     volumes:
-      - db-data:/app/database
+      - user-db:/app/database
     environment:
       - JWT_SECRET=      # <-- Add the JWT secret key here.
       - ALLOWED_ORIGINS= # <-- List the allowed CORS origins here, separating multiple entries with a comma.
@@ -15,4 +15,4 @@ services:
     ports:
       - "3000:3000"
 volumes:
-  db-data:
+  user-db:

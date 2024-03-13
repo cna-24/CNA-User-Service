@@ -5,29 +5,8 @@
     {
       "idx": 0,
       "version": "5",
-      "when": 1705944245227,
-      "tag": "0000_gifted_newton_destine",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1707917168972,
-      "tag": "0001_nasty_speed",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "5",
-      "when": 1707917227097,
-      "tag": "0002_famous_silhouette",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "5",
-      "when": 1709913611171,
-      "tag": "0003_quiet_wind_dancer",
+      "when": 1710364190662,
+      "tag": "0000_icy_bloodstorm",
       "breakpoints": true
     }
   ]

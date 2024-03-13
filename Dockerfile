@@ -7,7 +7,15 @@ COPY ./drizzle ./drizzle
 COPY ./src ./src
 COPY ./database ./database
 
-RUN bun install
-RUN bun run db-migrate
 
-CMD bun run ./src/server.ts
+# Update apk repositories
+RUN apk update
+
+# Install Node.js (and npm) in the Alpine image
+RUN apk add --update nodejs
+
+# Install dependencies
+RUN bun install
+
+
+CMD bun run db-gen && bun run db-migrate && bun run ./src/server.ts
