@@ -41,7 +41,7 @@ const createUser = async (username: string, email: string, password: string) => 
         .values({ username, email, password: hashedPassword });
 };
 
-const hashPassword = async (password: string) => {
+export const hashPassword = async (password: string) => {
     return await Bun.password.hash(password, {
         algorithm: "argon2id",
         memoryCost: 2048, // KiB

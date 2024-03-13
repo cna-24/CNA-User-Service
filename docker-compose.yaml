@@ -6,8 +6,11 @@ services:
     volumes:
       - db-data:/app/database
     environment:
-      - JWT_SECRET= # <-- Add the JWT secret key here.
+      - JWT_SECRET=      # <-- Add the JWT secret key here.
       - ALLOWED_ORIGINS= # <-- List the allowed CORS origins here, separating multiple entries with a comma.
+      - ADMIN_USERNAME = # <-- Add the Admin username here.
+      - ADMIN_PASSWORD = # <-- Add the Admin password here.
+      - ADMIN_EMAIL =    # <-- Add the Admin email here.
     restart: on-failure
     ports:
       - "3000:3000"
