@@ -103,7 +103,7 @@ user.patch("/:id", async (c) => {
             }
             if (Object.keys(updateData).length > 0) {
                 await db.update(users).set(updateData).where(eq(users.id, id))
-                return c.json({ message: "Updated user" })
+                return c.json({ message: "Updated succesfully" })
             }
         }
         return c.json({ message: "Unauthorized to update user" }, 401)

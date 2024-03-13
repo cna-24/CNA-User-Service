@@ -176,7 +176,44 @@ The project uses **Bun**, which has an experimental build for Windows support.
     }
     ```
 
-#### 2. Get user with id 
+#### 2. Update/patch user
+
+**NOTE! Only a admin or the owner can get update information!**
+
+-   **Endpoint:** `/user/:id`
+-   **Method:** `Patch`
+-   **URL Parameter:**
+    -   `id`: number (Int)
+-   **Headers:**
+
+    -   `Authorization`: Bearer TOKEN
+-   **Body Parameters:**
+
+    -   `password`: String (required, min 8 characters)
+    -   `email`: String
+    -   `admin`: Boolean
+
+
+-   **Example Request:**
+    ```text
+    url:port/user/1
+    ```
+    ```json
+    {
+        "email": "blabla@gmail.com",
+        "password": "password",
+        "admin": "False"
+    }
+    ```
+    
+-   **Response:**
+    ```json
+    {
+       "message": "Updated Succesfully"
+    }
+    ```
+
+#### 3. Get user with id 
 
 **NOTE! Only a admin or the owner can get user information!**
 
@@ -200,7 +237,8 @@ The project uses **Bun**, which has an experimental build for Windows support.
     }
     ```
 
-#### 3. Delete user
+
+#### 4. Delete user
 
 **NOTE! Admin can delete any user!**
 **Owner can delete own user!**
