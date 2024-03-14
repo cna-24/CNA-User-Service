@@ -11,7 +11,7 @@ COPY ./database ./database
 # Update apk repositories
 RUN apk update
 
-# Install Node.js (and npm) in the Alpine image
+# Install Node.js
 RUN apk add --update nodejs
 
 # Install dependencies
